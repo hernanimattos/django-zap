@@ -3,7 +3,7 @@ from api.core.documents.models import Document
 
 
 class Signer(models.Model):
-    id = models.AutoField(primary_key=True)
+    # id = models.AutoField(primary_key=True)
     token = models.CharField(max_length=255, null=False, blank=True)
     status = models.CharField(max_length=50, null=False, default='')
     name = models.CharField(max_length=255, null=False, blank=True, default='')

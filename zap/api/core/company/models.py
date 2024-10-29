@@ -1,7 +1,7 @@
 from django.db import models
 
 class Company(models.Model):
-    id = models.AutoField(primary_key=True)
+    # id = models.AutoField(primary_key=True)
     name = models.CharField(max_length=255, null=False, blank=True, default='')
     created_at = models.DateTimeField(auto_now_add=True)
     last_update_at = models.DateTimeField(auto_now=True)
