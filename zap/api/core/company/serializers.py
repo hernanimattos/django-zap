@@ -4,4 +4,4 @@ from .models import  Company
 class CompanySerializer(serializers.ModelSerializer):
     class Meta:
         model = Company
-        fields = ['api_token']
+        fields = '__all__'

@@ -12,7 +12,6 @@ class CompanyRepository():
 
         try:
             company_instance, created = Company.objects.get_or_create(**company)
-            print(company_instance, 'llllll')
             return company_instance
         except Company.DoesNotExist:
             return None

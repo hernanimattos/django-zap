@@ -1,15 +1,19 @@
-from .repository import SignerRepository
+
 from .serializers import SignerSerializer
 from .models import Signer
+from .repository import SignerRepository
 
 class CreateBulkSignersUseCase():
-    signers_repository = SignerRepository()
-    serializer_class = SignerSerializer
+    signer_repository = SignerRepository()
+    def execute(self, signers, document):
+        existing_signers = Signer.objects.filter(document=document)
+        existing_signer_emails = set(signer.email for signer in existing_signers)
+        signers_response = []
+        for signer_data in signers:
+            if signer_data['email'] not in existing_signer_emails:
+                signer = self.signer_repository.create(document=document, **signer_data)
+                signers_response.append(signer)
 
-    def execute(self, signers):
-        serializer = self.get_serializer(data=signers, many=True)
-        serializer.is_valid(raise_exception=True)
-        signers_bulk = [Signer(**sign) for sign in serializer.validated_data]
-        signers = self.signers_repository.bulk_create(signers_bulk)
-
-        return signers
+        all_signers = list(existing_signers) + signers_response
+   
+        return SignerSerializer(all_signers, many=True).data

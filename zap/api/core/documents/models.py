@@ -1,8 +1,9 @@
 from django.db import models
 from api.core.company.models import Company
+# from api.core.signers.models import Signer
 
 class Document(models.Model):
-    # id = models.AutoField(primary_key=True)
+    id = models.AutoField(primary_key=True)
     openID = models.IntegerField(null=False, blank=True, default=0)
     token = models.CharField(max_length=255, null=False, blank=True, default='')
     name = models.CharField(max_length=255, null=False, blank=True, default='')
