@@ -9,7 +9,6 @@ class CompanyRepository():
         
     def get_or_create(self, company):
 
-
         try:
             company_instance, created = Company.objects.get_or_create(**company)
             return company_instance
