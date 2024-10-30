@@ -13,7 +13,27 @@ services:
     volumes:
       - postgres_data:/var/lib/postgresql/data
 
+  web:
+      build: .
+      container_name: django_container
+      command: python manage.py runserver 0.0.0.0:8000
+      volumes:
+        - .:/zap
+      ports:
+        - "8000:8000"
+      depends_on:
+        - db
+      environment:
+        - DATABASE_HOST=db
+        - DATABASE_PORT=5432
+        - DATABASE_NAME=zapsign
+        - DATABASE_USER=zap
+        - DATABASE_PASSWORD=zap
+
 volumes:
   postgres_data:
+
+
+  
 
   

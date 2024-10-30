@@ -4,6 +4,7 @@ class UpdateBulkSignersUseCase():
   
 
     def execute(self, document, signers):
+
         for signer_data in signers:
            find_signer  =  Signer.objects.filter(document=document, email=signer_data['email']).first()
            if find_signer:
