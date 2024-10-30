@@ -25,3 +25,6 @@ class DocumentRepository:
         document.save()
     
         return document
+    
+    def get_document_by_id(self, document_id):
+        return Document.objects.get(id=document_id)

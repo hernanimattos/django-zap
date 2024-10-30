@@ -1,4 +1,3 @@
-
 from .serializers import SignerSerializer
 from .models import Signer
 class CreateBulkSignersUseCase():
