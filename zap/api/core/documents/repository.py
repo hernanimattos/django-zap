@@ -28,3 +28,10 @@ class DocumentRepository:
     
     def get_document_by_id(self, document_id):
         return Document.objects.get(id=document_id)
+    
+    def delete_document(self, document_id):
+        print(document_id)
+        print(document_id)
+        Document.objects.filter(id=document_id).delete()
+        return None
+    

@@ -9,7 +9,7 @@ class Signer(models.Model):
     name = models.CharField(max_length=255, null=False, blank=True, default='')
     email = models.EmailField(max_length=255, null=False, blank=True, default='')
     external_id = models.CharField(max_length=255, blank=True, null=True, default='')
-    document = models.ForeignKey(Document, on_delete=models.SET_NULL, related_name='signers', null=True)
+    document = models.ForeignKey(Document, on_delete=models.CASCADE, related_name='signers', null=True)
 
     def __str__(self):
         return self.name
